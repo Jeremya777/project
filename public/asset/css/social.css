@@ -1,0 +1,188 @@
+html,body{
+    margin:0;
+    padding:0;
+    background-color: #000;
+    height:100%;
+}
+body{
+    display:flex;
+}
+.menuSocial{
+    margin: auto;
+height: 795px;
+width: 1000px;
+
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+}
+.itemMenu2{
+
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    color:white;
+  /*  display:flex;
+    flex-direction: column;*/
+    overflow: hidden;
+}
+.itemMenu2:nth-child(3){
+    width:200px;
+    height:200px;
+}
+
+.stayCenter{
+    background-color: deepskyblue;
+}
+.boxItem{
+    background: rgb(8,119,242);
+background: linear-gradient(100deg, rgba(8,119,242,1) 0%, rgba(237,14,221,1) 55%);
+width: 260px;
+height: 100%;
+transition: 0.5s;
+}
+.boxMenu{
+
+float: left;
+width: 49%;
+height: 100%;
+align-content: center;
+text-align: center;
+display: grid;
+font-size: 40px;
+
+}
+.boxItem:hover{
+
+transform: translateX(-50%)
+}
+#searchPerson{
+    border: 1px solid red;
+    width: 100%;
+    transform: translateX(-100%);
+    background-color: whitesmoke;
+    display:grid;
+}
+.searchForm{
+    border:1px solid red;
+    width: max-content;
+    margin: auto;
+}
+#sectionFriends{
+    border: 1px solid red;
+    width: 100%;
+    transform: translateY(-100%);
+    background-color: whitesmoke;
+    display:grid;
+    position:absolute;
+    height:100%;
+}
+#sectionPosts{
+    border: 1px solid red;
+    width: 100%;
+    transform: translateY(+100%);
+   
+    position:absolute;
+
+    font-family: system-ui;
+  background: #111;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-x: hidden;
+}
+#sectionImages{
+  border: 1px solid red;
+  width: 100%;
+  transform: translateX(+100%);
+  display:grid;
+  position:absolute;
+  font-family: system-ui;
+  background: #111;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-x: hidden;
+  display:none;
+}
+/*POST */
+.wrapper {
+  height: 70%;
+  width: 85%;
+  background: #555;
+  position: relative;
+   display: grid; 
+  align-items: center;
+  overflow: hidden;
+  overflow-y: scroll;
+  }
+  .box:nth-of-type(odd){
+    background-color: red;
+  }
+  
+  
+  .box {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: green;
+    height: 350px;
+    width: 35%;
+    margin: auto;
+    padding: 0;
+    position: relative;
+    color: black;
+    font-size: 21px;
+    cursor: pointer;
+  }
+  
+  
+  
+  .prev {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+  }
+  .next {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+  }
+  button {
+    padding: 1rem 2rem 1rem 2rem;
+    border: none;
+    background: #555;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .swiper {
+    width: 60%;
+    height: 500px;
+  }
+  .insertPost{
+    height:35%;
+  }
+  .messPost{
+    height: 50%;
+    width: 500px;
+  }
+/*END POST*/
+#images{
+  display:none;
+}

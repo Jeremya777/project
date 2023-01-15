@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('asset/css/social.css') }}">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+
+    </head>
+    <body>
+
+        <div class="menuSocial">
+            <div class="itemMenu2 moveCornerTopLeft" id="posts">
+                <div class="boxItem">
+                    <div class="boxMenu"><i class="fa-solid fa-clone"></i></div>
+                    <div class="boxMenu">Posts</div>
+                </div>
+            </div>
+            <div class="itemMenu2 moveCornerTopRight" id="friends">
+                <div class="boxItem">
+                    <div class="boxMenu"><i class="fa-solid fa-user-group"></i></div>
+                    <div class="boxMenu">Friends</div>
+                </div>
+            </div>
+            <div class="itemMenu2 stayCenter">
+                
+            </div>
+            <div class="itemMenu2 moveCornerBottomLeft" id="search">
+                <div class="boxItem">
+                    <div class="boxMenu"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="boxMenu">Search</div>
+                </div>
+            </div>
+            <div class="itemMenu2 moveCornerBottomRight" id="images">
+                <div class="boxItem">
+                    <div class="boxMenu"><i class="fa-solid fa-images"></i></div>
+                    <div class="boxMenu">Images</div>
+                </div>
+            </div>
+
+              
+
+
+        </div>
+        <section id="searchPerson">
+            <div class="searchForm">
+                <input type="text" id="usernameData"><input type="submit" id="inputSearch">
+                <div id="resultSearch"></div>
+            </div>
+            <div id="closeSearchPerson">CLOSE</div>
+        </section>
+        <section id="sectionFriends">
+            <div id="closeFriends">CLOSE</div>
+        </section>
+         <section id="sectionImages">
+         <div id="closeImages">CLOSE</div>
+         <div class="insertPostImage">
+        <button id="addImage">Add div</button>
+        </div>
+        <button id="reloadPostImages">Reload</button>
+            <div class="swiperImages">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper-images">
+    <!-- Slides -->
+    <div class="swiper-slide box">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination-images"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev-images"></div>
+  <div class="swiper-button-next-images"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar-images"></div>
+</div>
+        </section>
+        <section id="sectionPosts">
+        <!--<button class="prev">prev</button>
+        <button class="next">next</button>
+        
+        
+        <div class="wrapper">
+        <button id="addDiv">Add div</button>
+        <div class="wrapperPost">
+          
+         </div>
+         
+        </div>-->
+            <div id="closePosts">CLOSE</div>
+<div class="insertPost">
+<textarea class="messPost"></textarea><button id="addDivImage">Add Image</button><button id="addDiv">Add div</button>
+</div>
+<button id="reloadPost">Reload</button>
+            <!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide box">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+        <script type="text/javascript">
+        
+            var nicknameUser = "{{ app.user.username }}";
+        </script>
+        <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js'
+
+            
+import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-analytics.js'
+
+            
+import { getAuth } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js'
+import { getFirestore, collection, getDocs, addDoc, setDoc, doc, getDoc, onSnapshot,query, orderBy, where } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
+
+            const firebaseConfig = {
+    apiKey: "AIzaSyDGGX0P2WeK_s3Ws-wSdkOEYHedVjaki9E",
+    authDomain: "project-b1337.firebaseapp.com",
+    projectId: "project-b1337",
+    storageBucket: "project-b1337.appspot.com",
+    messagingSenderId: "171456950503",
+    appId: "1:171456950503:web:97f7b329816a2bd3d4f242",
+    measurementId: "G-0NLP44R5VJ"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  var db =getFirestore(app);
+
+
+
+
+            gsap.to(".stayCenter", {opacity: 1, duration: 1, delay : 1})
+            gsap.to(".moveCornerTopLeft", {marginTop: "0", marginLeft: "0",opacity: 1,  duration:1, delay: 1 })
+            gsap.to(".moveCornerTopRight", {marginTop: "0", marginRight: "0", opacity: 1, duration:1, delay : 1 })
+            gsap.to(".moveCornerBottomLeft", {marginBottom: "0", marginLeft: "auto", opacity: 1,  duration:1, delay : 1 })
+            gsap.to(".moveCornerBottomRight", {marginBottom: "0", marginRight: "0", opacity: 1, duration:1, delay : 1 })
+            $("#search").click(function(){
+                gsap.to("#searchPerson", {transform : "translateX(0%)", duration: 0.5})
+            })
+            $("#inputSearch").click(async () => {
+                var searchUsername = $("#usernameData").val();
+                var docExist = true;
+                var docSecondExist = true;
+                const q = query(collection(db, "users"), where("nickname", "==", searchUsername));
+
+                const querySnapshot = await getDocs(q);
+                console.log(querySnapshot)
+                if(querySnapshot.size == 1){
+                    console.log("exists")
+                    var requestId = nicknameUser+":"+searchUsername;
+                    try{
+                        var getRequestId = await getDoc(doc(db,"requestFriendship",requestId ));
+        
+                    console.log("requestId", getRequestId.data())
+                    if(getRequestId.data().status == "sent")
+                        $("#resultSearch").html("<p style='color:blue'>"+searchUsername+"</p><button class='btnCancelRequest'>Cancel Request</button>");
+                    else if(getRequestId.data().status == "accepted")
+                        $("#resultSearch").html("<p style='color:blue'>"+searchUsername+"</p>");
+                    else
+                        $("#resultSearch").html("<p style='color:blue'>"+searchUsername+"</p><button class='sendRequestFriend'>Become friend</button>");
+                    }
+                    catch(error){
+                        docExist = false;
+                    }
+                    if(!docExist){
+                        requestId = searchUsername+":"+nicknameUser;
+                        try{
+                        getRequestId = await getDoc(doc(db,"requestFriendship",requestId ));
+                        if(getRequestId.data().status == "sent")
+                        $("#resultSearch").html("<p style='color:blue'>"+searchUsername+"</p><button class='btnCancelRequest'>Cancel Request</button>");
+                    else if(getRequestId.data().status == "accepted")
+                        $("#resultSearch").html("<p style='color:blue'>"+searchUsername+"</p>");
+                    else
+                        $("#resultSearch").html("<p style='color:blue'>"+searchUsername+"</p><button class='sendRequestFriend'>Become friend</button>");
+                        }
+                        catch(error){
+                            docSecondExist = false;
+                        }
+                        if(!docSecondExist){
+                            $("#resultSearch").html("<p style='color:blue'>"+searchUsername+"</p><button class='sendRequestFriend'>Become friend</button>");
+                        }
+                    }
+                        
+                }
+                else{
+                    $("#resultSearch").html("<p style='color:red'>Username doesn't exists.</p>");
+                }
+                $(".sendRequestFriend").click(async () => {
+                    var x = 1;
+                    var getDocuments = await getDocs(collection(db, "requestFriendship"));
+                    getDocuments.forEach((doc) => {
+                        x++;
+                    })
+
+
+
+                    var docId = nicknameUser+":"+searchUsername;
+                     setDoc(doc(db, "requestFriendship", docId), {
+                        sender : nicknameUser,
+                        receiver : searchUsername,
+                        status : "sent",
+                        count : x
+                    })
+                    $(".sendRequestFriend").remove()
+                    $("#resultSearch").append("<button class='btnCancelRequest'>Cancel Request</button>")
+                    $(".btnCancelRequest").click(() => {
+                    alert()
+                    })
+                })
+                
+            })
+            $("#closeSearchPerson").click(() => {
+                gsap.to("#searchPerson", {transform: "translateX(-100%)", duration: 0.5})
+            })
+            $("#friends").click(() => {
+                gsap.to("#sectionFriends", {transform: "translateY(0%)", duration: 0.5})
+            })
+            $("#closeFriends").click(() => {
+                gsap.to("#sectionFriends", {transform: "translateY(-100%)", duration: 0.5})
+            })
+            $("#posts").click(() => {
+                gsap.to("#sectionPosts", {transform: "translateY(0%)", duration: 0.5})
+            })
+            $("#closePosts").click(() => {
+                gsap.to("#sectionPosts", {transform: "translateY(+100%)", duration: 0.5})
+            })
+            $("#images").click(() => {
+                gsap.to("#sectionImages", {transform: "translateX(0%)", duration: 0.5})
+            })
+            $("#closeImages").click(() => {
+                gsap.to("#sectionImages", {transform: "translateX(+100%)", duration: 0.5})
+            })
+
+                   var swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: false,
+  effect: "cards",
+  grabCursor: true,
+    centeredSlides : true,
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+}); 
+     /*          var swiperImages = new Swiper('.swiperImages', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: false,
+  effect: "cards",
+  grabCursor: true,
+    centeredSlides : true,
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination-images',
+    clickable: true,
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next-images',
+    prevEl: '.swiper-button-prev-images',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar-images',
+  },
+}); */
+
+function getPosts(){
+            const unsub = onSnapshot(query(collection(db, "posts"), orderBy("count","desc")), async(documentSnap) => {
+                    $(".swiper-wrapper").html("")
+                    var ki = 0;     
+                    var posts = []
+                    for(var docu of documentSnap.docs){
+                        ki++;
+                        try{
+                        var checkFriend = await getDoc(doc(db, "requestFriendship",  docu.id.split(":")[0]+":"+nicknameUser ));
+                        console.log(" checkFriend1",checkFriend)
+                        if(checkFriend.data() == undefined){
+                            checkFriend = await getDoc(doc(db, "requestFriendship", nicknameUser+":"+ docu.id.split(":")[0] ));
+                            console.log("checkFriend2",checkFriend) 
+                        }
+                        }
+                        catch(error){
+                            console.log("error", error);
+                        }
+                        if(docu.id.split(":")[0] == "default" ){
+                        
+                          
+                            
+                        //swiper.prependSlide("<div class='swiper-slide box'>"+docu.data().postMessage+"snap</div>")
+                        posts.push({id: docu.data().count, message: docu.data().postMessage})
+                        }
+                         if( docu.id.split(":")[0] == nicknameUser || checkFriend.data() != undefined && checkFriend.data().status == "accepted" ){
+                        
+                          
+          
+                    
+                        
+                       // swiper.prependSlide("<div class='swiper-slide box'>"+docu.data().postMessage+"snap</div>")
+                        posts.push({id: docu.data().count, message: docu.data().postMessage})
+                        }
+                        
+                       /* if(checkFriend.data() != undefined && checkFriend.data().status == "accepted"){
+                            swiper.appendSlide("<div class='swiper-slide box'>"+docu.data().postMessage+"snap</div>")
+                        }*/
+                        
+                    }
+                    
+                    console.log(posts)
+                 
+                        if(ki == documentSnap.docs.length){
+                            $(".swiper-wrapper").html("")
+                            console.log("posts", posts)
+                            posts.sort(function(a, b) { 
+                                return a.id + b.id ;
+                            });
+                            for(var i=0; i < posts.length; i++){
+                                swiper.appendSlide("<div class='swiper-slide box'>"+posts[i].message+"snap</div>")
+                            }
+                            unsub()
+                        }
+        
+                    
+            })
+                          
+}
+getPosts()
+            $("#addDiv").click(async() => {
+                    var x = 1;
+                    var getDocuments = await getDocs(collection(db, "posts"));
+                    getDocuments.forEach((doc) => {
+                        x++;
+                    })
+
+
+
+                    var docId = nicknameUser+":"+x;
+                     setDoc(doc(db, "posts", docId), {
+                        author : nicknameUser,
+                        postMessage : $(".messPost").val(),
+                        count : x
+                    })
+
+                  getPosts();
+
+
+
+
+            //swiper.prependSlide("<div class='swiper-slide box'>"+$(".messPost").val()+"</div>")
+              
+              })
+        
+            
+            $("#reloadPost").click(() => {
+                getPosts();
+            })
+            
+   
+        </script>
+    </body>
+</html>

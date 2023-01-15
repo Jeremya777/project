@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <section class="container h-100 d-flex ">
+<div class="boxLoginRegistration position-absolute top-50 start-50 translate-middle ">
+  <div class="boxLR">
+    <h1 class="title">Noname</h1>
+    <div class="inputForm">
+      <div class="form">
+        <h3 class="mb-4">Sign up</h3>
+        <!--<input id="usernameData" class="inputData" type="text" placeholder="Username"/><br>
+        <input id="passwordData" class="inputData" type="text" placeholder="Password"/><br>
+        <input class="buttonForm" type="submit"/>-->
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="buttonForm">Register</button>
+    {{ form_end(registrationForm) }}
+      </div>
+    </div>
+  </div>
+  
+  <div class="border borderLeft"></div>
+  <div class="border borderRight"></div>
+  <div class="border borderTop"></div>
+  <div class="border borderBottom"></div>
+</div>
+</section>
+{% endblock %}

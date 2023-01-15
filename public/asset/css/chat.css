@@ -1,0 +1,97 @@
+.popup{
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid black;
+width: 470px;
+position: fixed;
+right: 35px;
+bottom: 0;
+height: 30px;
+background-color: #040008;
+}
+.person{
+border: 1px solid black;
+height: 67px;
+align-items: center;
+display: inline;
+text-align: center;
+color: #fff;
+}
+
+.tooglePopup{
+    border-radius: 10px 10px 0px 0px;
+    background-color: #88ce02;
+height: 30px;
+
+align-content: center;
+
+text-align: center;
+
+display: grid;
+
+}
+.containerInfoFriends{
+display: flex;
+
+width: 350px;
+margin-left: 75px;
+}
+.imageFriend{
+/*background-image: url('user.jpg');*/
+width: 70px;
+height: 70px;
+background-size: cover;
+background-repeat: no-repeat;
+border-radius: 50%;
+}
+.popupHeight{
+height: 600px;
+transition: ease-in-out;
+transition-duration: 0s;
+transition-duration: 0.5s;
+}
+.chatPerson{
+background-color: #fff;
+width: 400px;
+height: 550px;
+display: none;
+}
+.closePerson{
+    height:50px;
+    width:50px;
+    background-color: #88ce02;
+}
+.containerChats{
+    position: absolute;
+    bottom: 0;
+    width: 1410px;
+    border: 1px solid red;
+    left: 20px;
+    display: flex;
+}
+.showChat{
+    display: block;
+}
+.topChat{
+    border: 1px solid red;
+    height: 35px;
+    background-color: lime;
+}
+.centerChat{
+    border: 1px solid red;
+    height: 472px;
+}
+.bottomChat{
+    border: 1px solid red;
+    height: 37px;
+    background-color: fuchsia;
+}
+.messageUser{
+    float: right;
+    clear:both;
+    background-color: gold;
+}
+.messageFriend{
+    float:left;
+    clear: both;
+    background-color: red;
+}

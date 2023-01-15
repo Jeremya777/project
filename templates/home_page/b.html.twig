@@ -1,0 +1,71 @@
+{% extends 'home_page/index.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <div class="back">Back</div>
+    <div class="barRight">
+        <div class="socialNotifications">
+          
+        </div>
+        <div class="itemBar notifications">
+            N
+        </div>
+    </div>
+     <div class="container" id="body">
+            <div class="movies ctx" id="moviesId">
+                <div class="sectionCenter sectionMovies" id="movies" name="movies"><div class="circle"></div>
+                {% for user in db %}
+                {{ user }}
+                {% endfor %}
+                </div>
+
+            </div>
+            <div class="music ctx" id="musicId">
+                <div class="sectionCenter sectionMusic" id="music" name="music"><div class="circle"></div></div>
+
+            </div>
+            <div class="news ctx" id="newsId">
+                <div class="sectionCenter sectionNews" id="news" name="news"><div class="circle"></div></div>
+
+            </div>
+            <div class="shop ctx " id="shopId">
+                <div class="sectionCenter sectionShop" id="shop" name="shop"><div class="circle"></div></div>
+
+            </div>
+            <div class="social ctx" id="socialId">
+                <div class="sectionCenter sectionSocial" id="social" name="social"><div class="circle"></div>
+                
+                </div>
+
+            </div>
+            <div class="settings ctx" id="settingsId">
+                <div class="sectionCenter sectionSettings" id="settings" name="settings"><div class="circle"></div></div>
+
+            </div>
+            <div class="dashboard ctx" id="dashboardId">
+                <div class="sectionCenter sectionDashboard" id="dashboard" name="dashboard"><div class="circle"></div></div>
+
+            </div>
+        </div>
+         <div class="popup">
+          <div class="tooglePopup"><div>Chat Friends</div></div>
+            {% for friend in db %}
+                <div class="person" data-id="{{ friend }}"><div class="containerInfoFriends"><div class="imageFriend"></div><div class="friendMessage">{{ friend }}</div></div></div>
+            {% endfor %}
+        <!--  <div class="person" id="p"><div class="containerInfoFriends"><div class="imageFriend"></div><div class="friendMessage">B</div></div></div>
+          <div class="person" id="p"><div class="containerInfoFriends"><div class="imageFriend"></div><div class="friendMessage">C</div></div></div>
+          <div class="person" id="p"><div class="containerInfoFriends"><div class="imageFriend"></div><div class="friendMessage">D</div></div></div>
+          <div class="person" id="p"><div class="containerInfoFriends"><div class="imageFriend"></div><div class="friendMessage">E</div></div></div>-->
+     </div>
+     <div class="containerChats">
+        {% for friend in db %}
+                <div class="chatPerson" id="{{ friend }}">
+                <div class="topChat">{{ friend }} <button class="hideChat">Hide</button></div>
+                <div class="centerChat" id="{{ friend }}Chat"></div> 
+                <div class="bottomChat">
+                    <input class="messageChat"><input type="submit" class="btnSendMessage"></div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock %}

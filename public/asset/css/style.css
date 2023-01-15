@@ -1,0 +1,77 @@
+
+.container{
+    max-width: 100% !important;
+    background-color: #00050f;
+  }
+  .boxLoginRegistration{
+    width: 25%;
+    height: 35%;
+    z-index: 0;
+  }
+  
+.border {
+  background-color: lime;
+  position: absolute;
+  border:none !important;
+}
+.borderLeft{
+  left: 0;
+  width: 1px;
+  height: 100%;
+  transform-origin: left bottom;
+  transform: scaleY(0);
+  
+}
+.borderTop{
+  height: 1px;
+  top: 0;
+  width: 100%;
+  transform-origin: left top;
+  transform: scaleX(0);
+}
+.borderRight{
+  right: 0;
+  width: 1px;
+  height: 100%;
+  transform-origin: left top;
+  transform: scaleY(0);
+}
+.borderBottom {
+  height: 1px;
+  bottom: 0;
+  width: 100%;
+  transform-origin: right bottom;
+  transform: scaleX(0);
+}
+.boxLR{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
+}
+.title{
+  color: #00050f;
+}
+.inputForm{
+ 
+    height: 87%;
+    display: grid;
+}
+.inputData{
+  height:25px;
+  width: 300px;
+}
+.form{
+  margin: auto;
+  color:whitesmoke;
+}
+.buttonForm{
+  display: none;
+}
+.buttonShow{
+  display:block;
+}
+.animate__headShake{
+  animation-duration: infinite;
+}
