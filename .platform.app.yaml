@@ -12,5 +12,5 @@ web:
   locations:
     '/':
       root: 'public'
-      passthru: 'index.php'
+      passthru: '/index.php'
       allow: true
