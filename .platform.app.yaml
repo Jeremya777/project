@@ -2,8 +2,8 @@ name: app
 type: php:7.4
 relationships:
   database:
-    type: mysql
-    path: /data/db
+    type: 'mysql'
+    path: '/data/db'
     disk: 1024
 web:
   commands:
