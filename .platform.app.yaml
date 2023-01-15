@@ -2,20 +2,26 @@
 name: 'app'
 
 # The language and version for your app.
-type: 'php:7.4'
+type: 'symfony:6'
 
 # The size of the app's persistent disk (in MB).
 disk: 2048
 
-# The app's configuration when it's exposed to the web.
 web:
-    locations:
-        '/':
-            # The public directory relative to the app root.
-            root: 'public'
-            # Forward resources to the app.
-            passthru: true
-            # What files to use when serving a directory.
-            index: ["index.html"]
-            # Allow files even without specified rules.
-            allow: true
+  locations:
+    '/':
+      root: 'public'
+      index: 'index.php'
+      try_files: '$uri /index.php$is_args$args'
+      passthru: 'index.php'
+      allow: true
+      expires: -1
+  env:
+    DATABASE_URL: 'mysql://username:password@database/dbname'
+  commands:
+    start: bin/console server:start
+    stop: bin/console server:stop
+
+dependencies:
+  post_deploy:
+    - composer install
