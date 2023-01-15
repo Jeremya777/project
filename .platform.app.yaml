@@ -9,11 +9,6 @@ dependencies:
     php:
         composer/composer: '^2'
 
-# The app's relationships (connections) with services or other applications.
-# The key is the relationship name that can be viewed in the app.
-# The value is specific to how the service is configured.
-relationships:
-    database: 'mysqldb:mysql'
 
 # Scripts that are run as part of the build and deploy process.
 hooks:
