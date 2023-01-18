@@ -20,6 +20,7 @@ runtime:
 variables:
     php:
         opcache.preload: config/preload.php
+    debug: true
 build:
     flavor: none
 
