@@ -21,7 +21,7 @@ class HomePageController extends AbstractController
     public function index(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $factory = (new Factory)
-                            ->withServiceAccount('/Users/andres/Desktop/project/firebase.json')
+                            ->withServiceAccount( $_SERVER['DOCUMENT_ROOT'].'firebase.json')
                             ->withDatabaseUri('https://project-b1337-default-rtdb.europe-west1.firebasedatabase.app/');
         $firestore = $factory->createFirestore();
        /* $database = $factory->createDatabase();

@@ -1,47 +1,61 @@
-# The app's name, which must be unique within the project.
-name: 'app'
+name: app
 
-# The type key specifies the language and version for your app.
-type: 'php:8.1'
+type: php:8.1
 
-# Global dependencies to be added and cached and then available as commands.
-dependencies:
-    php:
-        composer/composer: '^2'
+runtime:
+    extensions:
+        - apcu
+        - mbstring
+        - sodium
+        - iconv
+        - ctype
+        - pdo_pgsql
 
+#variables:
+#    php:
+#        # uncomment on PHP 7.4+
+#        #opcache.preload: config/preload.php
 
-# Scripts that are run as part of the build and deploy process.
-hooks:
-    # Build hooks can modify app files on disk but not access any services like databases.
-    build: ./build.sh
-    # Deploy hooks can access services but the file system is now read-only.
-    deploy: ./deploy.sh
-    # Post deploy hooks run when the app is accepting outside requests.
-    post_deploy: ./post_deploy.sh
+build:
+    flavor: none
 
-# The size of the app's persistent disk (in MB).
-disk: 2048
+disk: 512
 
-# Define writable, persistent filesystem mounts.
-# The key is the directory path relative to the application root.
-# In this case, `web-files` is just a unique name for the mount.
-mounts:
-    'web/files':
-        source: local
-        source_path: 'web-files'
-
-# The app configuration when it's exposed to the web.
 web:
     locations:
-        '/':
-            # The app's public directory relative to its root.
-            root: 'public'
-            # A front controller to determine how to handle requests.
-            passthru: '/app.php'
-        # Allow uploaded files to be served, but don't run scripts.
-        # Missing files get sent to the front controller.
-        '/files':
-            root: 'web/files'
-            scripts: false
-            allow: true
-            passthru: '/app.php'
+        "/":
+            root: "public"
+            expires: 1h
+            passthru: "/index.php"
+
+workers:
+    messenger:
+        # PHP background workers usually don't require much CPU. See
+        # https://symfony.com/doc/current/cloud/cookbooks/resources_allocation.html
+        # for more information
+        size: XS
+        resources:
+            base_memory: 64 # Keep in sync with the `memory-limit` flag value
+            memory_ratio: 128
+        commands:
+            # Don't forget to update your receiver name(s)
+            start: symfony console --time-limit=3600 --memory-limit=64M messenger:consume async
+
+mounts:
+    "/var": { source: local, source_path: var }
+    
+relationships:
+    database: "database:postgresql"
+
+hooks:
+    build: |
+        set -x -e
+
+        curl -fs https://get.symfony.com/cloud/configurator | bash
+        
+        NODE_VERSION=18 symfony-build
+
+    deploy: |
+        set -x -e
+
+        symfony-deploy
