@@ -7,6 +7,7 @@ right: 35px;
 bottom: 0;
 height: 30px;
 background-color: #040008;
+    overflow-y: auto;
 }
 .person{
 border: 1px solid black;
@@ -50,10 +51,17 @@ transition-duration: 0s;
 transition-duration: 0.5s;
 }
 .chatPerson{
+<<<<<<< HEAD
 background-color: #fff;
 width: 400px;
 height: 550px;
 display: none;
+=======
+width: 400px;
+height: 550px;
+display: none;
+    margin-left: 2%;
+>>>>>>> 02c46c1 (preparing to deploy)
 }
 .closePerson{
     height:50px;
@@ -64,7 +72,10 @@ display: none;
     position: absolute;
     bottom: 0;
     width: 1410px;
+<<<<<<< HEAD
     border: 1px solid red;
+=======
+>>>>>>> 02c46c1 (preparing to deploy)
     left: 20px;
     display: flex;
 }
@@ -72,6 +83,7 @@ display: none;
     display: block;
 }
 .topChat{
+<<<<<<< HEAD
     border: 1px solid red;
     height: 35px;
     background-color: lime;
@@ -84,14 +96,67 @@ display: none;
     border: 1px solid red;
     height: 37px;
     background-color: fuchsia;
+=======
+    border: 1px solid #FFFFFF;
+    height: 35px;
+    background-color: #FFFFFF;
+    border-radius: 10px 10px 0px 0px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    display: grid;
+    width: 100%;
+    grid-auto-flow: column;
+}
+.centerChat{
+    height: 472px;
+    background-color: #000000;
+    overflow-y: auto;
+
+}
+.bottomChat{
+    border: 1px solid #FFFFFF;
+    height: 37px;
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 10px 10px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    display: grid;
+    width: 100%;
+    grid-auto-flow: column;
+>>>>>>> 02c46c1 (preparing to deploy)
 }
 .messageUser{
     float: right;
     clear:both;
+<<<<<<< HEAD
     background-color: gold;
+=======
+    background-color: #ecfa0b;
+    padding: 6px;
+    margin-top: 18px;
+    margin-right: 10px;
+    border-radius: 10px;
+>>>>>>> 02c46c1 (preparing to deploy)
 }
 .messageFriend{
     float:left;
     clear: both;
+<<<<<<< HEAD
     background-color: red;
+=======
+    background-color: #ecfa0b;
+    padding: 6px;
+    margin-top: 18px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.hideChat{
+    color: #ffffff;
+    background-color: #000;
+    border: 1px solid lime;
+>>>>>>> 02c46c1 (preparing to deploy)
 }

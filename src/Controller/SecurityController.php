@@ -6,9 +6,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+<<<<<<< HEAD
 
 class SecurityController extends AbstractController
 {
+=======
+use Doctrine\DBAL\Connection;
+use Doctrine\ORM\EntityManagerInterface;
+
+class SecurityController extends AbstractController
+{
+
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager) {
+        $this->entityManager = $entityManager;
+    }
+    
+>>>>>>> 02c46c1 (preparing to deploy)
     #[Route(path: '/', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -29,4 +44,40 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+<<<<<<< HEAD
+=======
+    #[Route(path: '/movies', name: 'app_movies')]
+    public function movies(): Response
+    {
+        $connection = $this->entityManager->getConnection();
+        $arrayImages = [];
+        $result = $connection->executeQuery('SELECT immagine FROM azione')->fetchAllAssociative();
+    
+        foreach ($result as $row) {
+            $arrayImages[] = $row['immagine'];
+        }
+    
+        return $this->render('movies/index.html.twig', [
+            'images' => $arrayImages
+        ]);
+    }
+    #[Route(path: '/movies/{id}', name: 'app_moviesid')]
+    public function moviesId(string $id): Response
+    {
+        $connection = $this->entityManager->getConnection();
+        $arrayImages = [];
+        $result = $connection->executeQuery('SELECT immagine FROM '.$id.'')->fetchAllAssociative();
+    
+        foreach ($result as $row) {
+            $arrayImages[] = $row['immagine'];
+        }
+    
+        return $this->render('movies/category_movie.html.twig', [
+            'categoria' => $id,
+            'images' => $arrayImages
+        ]);
+    }
+    
+
+>>>>>>> 02c46c1 (preparing to deploy)
 }

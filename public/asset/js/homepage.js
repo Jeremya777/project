@@ -115,6 +115,12 @@ $(".sectionCenter").click(function() {
         if($(this).attr("id") == "social"){
             $(this).html("<iframe src='social' class='iframeService'></iframe>")
         }
+<<<<<<< HEAD
+=======
+        if($(this).attr("id") == "movies"){
+            $(this).html("<iframe src='movies' class='iframeService'></iframe>")
+        }
+>>>>>>> 02c46c1 (preparing to deploy)
     } 
 
 })

@@ -1,0 +1,100 @@
+<html lang="en" class="no-js"><!-- index14:58--><head>
+    <!-- Basic need -->
+    <title>Open Pediatrics</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link rel="profile" href="#">
+
+    <!--Google Font-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600">
+    <!-- Mobile specific meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone-no">
+ <script>
+    document.getElementsByTagName("html")[0].className += " js";
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('asset/css/css-movies/output.css') }}">
+
+<body>
+
+   <section class="relative z-1 mb-20 lg:mb-28">
+</section>
+
+   <section class="relative z-1 mb-20 lg:mb-28">
+    
+      <div class="grid grid-cols-12 gap-3 lg:gap-5">
+        <div class="col-span-12 xl:mb-8">
+          <h1 class="text-5xl lg:text-7xl uppercase">{{  categoria }}</h1>
+        </div>
+
+        
+      </div>
+    </div>
+   <div class="overflow-hidden reveal-fx reveal-fx--translate-up reveal-fx--is-visible" data-reveal-fx-delta="50">
+      <div class="carousel carousel-v3 flex flex-col w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-5xl js-carousel carousel--loaded" data-drag="on" data-loop="off" data-overflow-items="on" data-align-controls=".prod-card-v2__img-link">
+        <p class="sr-only">Carousel items</p>
+    
+        <div class="carousel__wrapper relative">
+       
+          <ol class="carousel__list" style="transform: translateX(0px);">  
+           {% for image in images %}
+            <li class="carousel__item" style="width: 333.3px;">
+              <div class="prod-card-v2">
+                <a href="#0" class="prod-card-v2__img-link" aria-label="Description of the link">
+                  <figure class="aspect-w-4 aspect-h-5">
+                    <img src="https://cineblog01.codes{{ image }}" alt="Product preview image">
+                  </figure>
+                </a>
+
+                <div class="p-3 lg:p-5 text-center">
+                  <h2 class="text-lg lg:text-2xl font-sans"><a href="#0" class="product-card-v2__title">Product Name</a></h2>
+
+                  <div class="mt-1 lg:mt-1.5">
+                    <span class="prod-card-v2__price">$79</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ol>
+    
+          <nav class="no-js:is-hidden">
+            <ul class="absolute top-0 left-0 bottom-0 right-0 pointer-events-none flex items-center justify-between">
+              <li>
+                <button class="reset carousel-v3__control carousel-v3__control--prev js-carousel__control js-tab-focus" disabled="true" style="margin-bottom: 106px; outline: none;">
+                  <svg class="icon w-[16px] h-[16px]" viewBox="0 0 16 16">
+                    <title>Show previous items</title>
+                    <g>
+                      <path d="M10.892,16.41L4.241,8.65c-0.321-0.374-0.321-0.927,0-1.301l6.651-7.76l1.519,1.302L6.317,8l6.093,7.108 L10.892,16.41z"></path>
+                    </g>
+                  </svg>
+                </button>
+              </li>
+    
+              <li>
+                <button class="reset carousel-v3__control carousel-v3__control--next js-carousel__control js-tab-focus" style="margin-bottom: 106px; outline: none;">
+                  <svg class="icon w-[16px] h-[16px]" viewBox="0 0 16 16">
+                    <title>Show next items</title>
+                    <g>
+                      <path d="M5.108,16.41L3.59,15.108L9.683,8L3.59,0.892L5.108-0.41l6.651,7.76c0.321,0.374,0.321,0.927,0,1.301 L5.108,16.41z"></path>
+                    </g>
+                  </svg>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      <div class="sr-only js-carousel__aria-live" aria-live="polite" aria-atomic="true"></div></div>
+    </div>
+  </section>
+         
+ 
+
+  <script src="https://unpkg.com/codyhouse-framework/main/assets/js/util.js"></script>
+<script src="{{ asset('asset/js/components.js')}}"></script>
+<script src="{{ asset('asset/js/film.js')}}"></script>
+</body>
+</html>
