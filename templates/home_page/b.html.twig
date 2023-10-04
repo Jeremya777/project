@@ -3,21 +3,21 @@
 {% block title %}Homepage{% endblock %}
 
 {% block body %}
-    <div class="back">Back</div>
+    <div class="back"><i class="fas fa-arrow-left"></i>
+</div>
     <div class="barRight">
         <div class="socialNotifications">
           
         </div>
         <div class="itemBar notifications">
-            N
+            <i class="fas fa-bell"></i>
+
         </div>
     </div>
      <div class="container" id="body">
             <div class="movies ctx" id="moviesId">
                 <div class="sectionCenter sectionMovies" id="movies" name="movies"><div class="circle"></div>
-                {% for user in db %}
-                {{ user }}
-                {% endfor %}
+            
                 </div>
 
             </div>
