@@ -137,6 +137,7 @@ $(".back").click(function(){
     if(is_movie_clicked == true){
         gsap.set("#moviesId", {width:"42%", height:"50%"})
         is_movie_clicked = false;
+        $("#movies").html("");
     }
     if(is_music_clicked == true){
         gsap.set("#musicId", {width:"43.2%", height:"50%"})
@@ -153,6 +154,7 @@ $(".back").click(function(){
     if(is_social_clicked == true){
         gsap.set("#socialId", {width:"38.4%", height:"38%"})
         is_social_clicked = false;
+        $("#social").html("")
     }
     if(is_settings_clicked == true){
         gsap.set("#settingsId", {width:"13.2%", height:"38%"})

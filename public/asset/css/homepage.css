@@ -140,7 +140,6 @@ margin-left: 437px;
 }
 .back{
     position: absolute;
-    border:1px solid red;
     width:100px;
     height: 50px;
     left:0;
@@ -160,7 +159,6 @@ margin-left: 437px;
     display: inherit;
 }
 .itemBar{
-    border: 1px solid blue;
     height: 85px;
     width:85px;
     color: white;
@@ -169,10 +167,12 @@ margin-left: 437px;
 .socialNotifications{
     border: 2px solid white;
     width: 345px;
-    height: 155px;
+    height: 420px;
     display: none;
     background-color: whitesmoke;
     z-index: 5;
+    max-height: max-content;
+    overflow-y: auto;
 }
 .showSocialNot{
     display:block;
