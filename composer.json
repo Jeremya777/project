@@ -8,10 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.0",
-<<<<<<< HEAD
-=======
         "doctrine/dbal": "*",
->>>>>>> 02c46c1 (preparing to deploy)
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
