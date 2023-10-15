@@ -58,17 +58,36 @@ class SecurityController extends AbstractController
     {
         $connection = $this->entityManager->getConnection();
         $arrayImages = [];
-        $result = $connection->executeQuery('SELECT immagine FROM '.$id.'')->fetchAllAssociative();
+        $arrayIds = [];
+        $titoli = [];
+        $result = $connection->executeQuery('SELECT * FROM '.$id.'')->fetchAllAssociative();
     
         foreach ($result as $row) {
             $arrayImages[] = $row['immagine'];
+            $arrayIds[] = $row["id"];
+            $titoli[] = $row["titolo"];
         }
     
         return $this->render('movies/category_movie.html.twig', [
             'categoria' => $id,
-            'images' => $arrayImages
+            'images' => $arrayImages,
+            'ids' => $arrayIds,
+            'titoli' => $titoli
         ]);
     }
+    #[Route(path: 'movies/movie/{categoria}/{id}', name: 'app_movieid')]
+    public function movieId(string $categoria, string $id): Response
+    {
+        $connection = $this->entityManager->getConnection();
+        $arrayImages = [];
+        $arrayIds = [];
+        $result = $connection->executeQuery('SELECT * FROM '.$categoria.' WHERE id = '.$id.'')->fetchAssociative();
     
+        return $this->render('movies/movie.html.twig', [
+            'link' => $result["linkvideo"],
+            'trama' => $result["trama"],
+            'titolo' => $result["titolo"]
+        ]);
+    }
 
 }

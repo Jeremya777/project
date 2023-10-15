@@ -43,18 +43,18 @@
            {% for image in images %}
             <li class="carousel__item" style="width: 333.3px;">
               <div class="prod-card-v2">
-                <a href="#0" class="prod-card-v2__img-link" aria-label="Description of the link">
+                <a href="movie/{{ categoria }}/{{ ids[loop.index -1]}}" class="prod-card-v2__img-link" aria-label="Description of the link">
                   <figure class="aspect-w-4 aspect-h-5">
                     <img src="https://cineblog01.codes{{ image }}" alt="Product preview image">
                   </figure>
                 </a>
 
                 <div class="p-3 lg:p-5 text-center">
-                  <h2 class="text-lg lg:text-2xl font-sans"><a href="#0" class="product-card-v2__title">Product Name</a></h2>
+                  <h2 class="text-lg lg:text-2xl font-sans"><a href="#0" class="product-card-v2__title">{{ titoli[loop.index - 1 ]}}</a></h2>
 
-                  <div class="mt-1 lg:mt-1.5">
-                    <span class="prod-card-v2__price">$79</span>
-                  </div>
+                  <!--<div class="mt-1 lg:mt-1.5">
+                    <span class="prod-card-v2__price"></span>
+                  </div>-->
                 </div>
               </div>
             </li>
